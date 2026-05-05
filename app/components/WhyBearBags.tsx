@@ -8,12 +8,13 @@ import Image from 'next/image';
 
 const WhyBearBags = () => {
   return (
-    <section id="why">
-  <div className="section-label">Product Philosophy</div>
-  <h2 className="section-title">Strong. <br />Compostable. </h2>
-  {/* <p className="section-sub">We are the strongest compostable garbage bag. Period.</p> */}
+    <section id="why" className="px-4 sm:px-6 md:px-[5%] py-12 sm:py-16 md:py-20 lg:py-24">
+  <div className="mb-10 md:mb-16">
+    <div className="section-label text-xs sm:text-sm">Product Philosophy</div>
+    <h2 className="section-title text-3xl sm:text-4xl md:text-5xl">Strong. <br />Compostable. </h2>
+  </div>
 
-  <div className="why-grid">
+  <div className="why-grid flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
     {/* <div className="why-cards">
       <div className="why-card">
         <div className="why-card-icon">

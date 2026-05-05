@@ -9,20 +9,22 @@ const FAQ = () => {
   };
 
   return (
-<section id="faq">
-  <div className="faq-layout">
+<section id="faq" className="px-4 sm:px-6 md:px-[5%] py-12 sm:py-16 md:py-20 lg:py-24">
+  <div className="faq-layout grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 md:gap-16">
     <div className="faq-sidebar">
-      <div className="section-label">FAQ</div>
-      <h3>Answers to questions we get most often</h3>
-      <p>Have something else in mind? We&apos;re happy to chat.</p>
-      <div className="faq-contact">
-        <p>Get in touch directly:</p>
-        <a href="mailto:hello@bearbags.in">hello@bearbags.in</a><br/>
-        <a href="https://wa.me/919131783440">WhatsApp: +91 91317 83440</a>
+      <div className="section-label text-xs sm:text-sm">FAQ</div>
+      <h3 className="text-2xl sm:text-3xl font-bold mb-4">Answers to questions we get most often</h3>
+      <p className="text-sm sm:text-base mb-6">Have something else in mind? We&apos;re happy to chat.</p>
+      <div className="faq-contact bg-cream-dark rounded-lg p-4 sm:p-6">
+        <p className="text-sm font-semibold mb-3">Get in touch directly:</p>
+        <div className="flex flex-col gap-2 text-sm">
+          <a href="mailto:hello@bearbags.in" className="hover:underline">hello@bearbags.in</a>
+          <a href="https://wa.me/919131783440" className="hover:underline">WhatsApp: +91 91317 83440</a>
+        </div>
       </div>
     </div>
 
-    <div className="faq-list">
+    <div className="faq-list space-y-3">
       <div className="faq-item open">
         <div className="faq-question" onClick={toggleFaq}>
           Are Bear Bags actually compostable, or is that just marketing&quest;

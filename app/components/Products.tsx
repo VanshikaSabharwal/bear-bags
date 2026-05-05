@@ -76,58 +76,58 @@ export function Products({ onAddToCart, cartItems }: ProductsProps) {
   return (
     <div className="min-h-screen" style={{ background: 'var(--cream)' }}>
       {/* Header */}
-      <section className="py-24 px-[5%] text-center">
-        <div className="text-[11px] font-semibold tracking-[2.5px] uppercase mb-4"
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-[5%] text-center">
+        <div className="text-[10px] sm:text-xs font-semibold tracking-[2px] sm:tracking-[2.5px] uppercase mb-3 sm:mb-4"
              style={{ color: 'var(--earth)' }}>
           Our Products
         </div>
-        <h1 className="font-['Playfair_Display'] font-bold tracking-tight mb-5"
-            style={{ fontSize: 'clamp(40px, 5vw, 64px)', color: 'var(--forest)' }}>
+        <h1 className="font-['Playfair_Display'] font-bold tracking-tight mb-4 sm:mb-5 text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
+            style={{ color: 'var(--forest)' }}>
           Choose Your Size
         </h1>
-        <p className="text-[17px] leading-relaxed max-w-[600px] mx-auto font-light"
+        <p className="text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-light"
            style={{ color: 'var(--text-muted)' }}>
           All our bags are 100% compostable, tear-resistant, and leak-proof. Plus, 30% of profits go to community development.
         </p>
       </section>
 
       {/* Products Grid */}
-      <section className="pb-24 px-[5%]">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1400px] mx-auto">
+      <section className="pb-12 sm:pb-16 md:pb-20 lg:pb-24 px-4 sm:px-6 md:px-[5%]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 max-w-6xl mx-auto">
           {products.map((product) => {
             const cartQty = getCartQuantity(product.id);
             const isAdded = addedToCart === product.id;
 
             return (
               <div key={product.id}
-                   className="rounded-[24px] overflow-hidden border transition-all hover:-translate-y-2 hover:shadow-xl"
+                   className="rounded-[20px] sm:rounded-[24px] overflow-hidden border transition-all hover:-translate-y-2 hover:shadow-xl"
                    style={{ background: 'white', borderColor: 'rgba(26,58,42,0.08)' }}>
                 {/* Product Icon */}
-                <div className="h-[180px] flex items-center justify-center text-[80px]"
+                <div className="h-32 sm:h-40 flex items-center justify-center text-6xl sm:text-7xl md:text-8xl"
                      style={{ background: 'var(--cream-dark)' }}>
                   {product.icon}
                 </div>
 
                 {/* Product Info */}
-                <div className="p-6">
-                  <h3 className="font-['Playfair_Display'] text-[22px] font-bold mb-2"
+                <div className="p-4 sm:p-5 md:p-6">
+                  <h3 className="font-['Playfair_Display'] text-lg sm:text-xl md:text-2xl font-bold mb-2"
                       style={{ color: 'var(--forest)' }}>
                     {product.name}
                   </h3>
-                  <p className="text-sm mb-4" style={{ color: 'var(--text-muted)' }}>
+                  <p className="text-xs sm:text-sm mb-4" style={{ color: 'var(--text-muted)' }}>
                     {product.description}
                   </p>
 
                   {/* Specs */}
-                  <div className="flex gap-4 mb-4 text-sm">
-                    <div className="flex-1 px-3 py-2 rounded-lg text-center"
+                  <div className="flex gap-3 mb-4 text-xs sm:text-sm">
+                    <div className="flex-1 px-2 sm:px-3 py-2 rounded-lg text-center"
                          style={{ background: 'var(--cream-dark)' }}>
                       <div className="font-medium" style={{ color: 'var(--forest)' }}>
                         {product.size}
                       </div>
                       <div className="text-xs opacity-60">Size</div>
                     </div>
-                    <div className="flex-1 px-3 py-2 rounded-lg text-center"
+                    <div className="flex-1 px-2 sm:px-3 py-2 rounded-lg text-center"
                          style={{ background: 'var(--cream-dark)' }}>
                       <div className="font-medium" style={{ color: 'var(--forest)' }}>
                         {product.count}

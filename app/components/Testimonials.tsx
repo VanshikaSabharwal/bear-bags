@@ -2,11 +2,13 @@ import React from 'react'
 
 const Testimonials = () => {
   return (
-    <section className="testimonials-section" id="testimonials">
-  <div className="section-label">Customer reviews</div>
-  <h2 className="section-title">What people are saying</h2>
+    <section className="testimonials-section px-4 sm:px-6 md:px-[5%] py-12 sm:py-16 md:py-20 lg:py-24" id="testimonials">
+  <div className="mb-10 md:mb-16">
+    <div className="section-label text-xs sm:text-sm">Customer reviews</div>
+    <h2 className="section-title text-3xl sm:text-4xl md:text-5xl">What people are saying</h2>
+  </div>
 
-  <div className="testimonials-grid">
+  <div className="testimonials-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
     <div className="testimonial-card featured">
       <div className="quote-mark">&quot;</div>
       <div className="stars">
