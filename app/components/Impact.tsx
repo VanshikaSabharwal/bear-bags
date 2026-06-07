@@ -1,50 +1,153 @@
-import React from 'react'
+import React from "react";
+import { PiLeafBold } from "react-icons/pi";
+import { GoShieldCheck } from "react-icons/go";
+import { LiaHandHoldingHeartSolid } from "react-icons/lia";
+import { MdPeopleOutline } from "react-icons/md";
+import { HiOutlineDocumentCheck } from "react-icons/hi2";
+import { FaBuilding, FaChartBar } from "react-icons/fa6";
+import { SlCalender } from "react-icons/sl";
+import { BiLandscape } from "react-icons/bi";
+import { HiOutlineBuildingLibrary } from "react-icons/hi2";
 
 const Impact = () => {
   return (
-    <section className="impact-section" id="impact">
-  <div className="impact-header">
-    <div className="impact-label">Our Impact so far</div>
-    <h2 className="impact-title">Numbers that matter</h2>
-    <p className="impact-sub">Every bag sold is a vote against plastic — and a contribution toward something bigger than just waste management.</p>
+    <section className="w-full bg-gradient-to-b from-[#06261F] via-[#08332A] to-[#06261F] py-20 px-6 text-white bg-[#173d36]">
+      <div className="max-w-6xl mx-auto text-center">
+
+        {/* Heading */}
+        <h2 className="text-4xl md:text-5xl font-semibold mb-3 font-serif">
+          Built to give back.
+        </h2>
+
+ {/* Small Divider */}
+<div className="flex items-center justify-center gap-3 mb-12">
+  {/* Left line with smooth fade on both ends */}
+  <div className="relative w-18 h-[1px] overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C8A45D] to-transparent" />
   </div>
 
-  <div className="metrics-grid">
-    <div className="metric-card">
-      <span className="metric-icon">
-      </span>
-      <div className="metric-num">0 <span className="metric-unit">kg</span></div>
-      <div className="metric-label">Plastic sent to landfill<br />from our bags </div>
-    </div>
-    <div className="metric-card">
-      <span className="metric-icon"></span>
-      <div className="metric-num">₹15 <span className="metric-unit">K</span></div>
-      <div className="metric-label">First donation made to<br />disability programs</div>
-    </div>
-    <div className="metric-card">
-      <span className="metric-icon"></span>
-      <div className="metric-num">100 <span className="metric-unit">%</span></div>
-      <div className="metric-label">Compostable materials<br />in every bag</div>
-    </div>
-    <div className="metric-card">
-      <span className="metric-icon"></span>
-      <div className="metric-num">30 <span className="metric-unit">%</span></div>
-      <div className="metric-label">Of profits committed to<br />community development</div>
-    </div>
-  </div>
+  {/* Center icon */}
+  <span className="text-[#C8A45D] text-lg">
+    <PiLeafBold className="inline-block w-6 h-6" />
+  </span>
 
-  <div className="impact-cta-row">
-    <div className="donation-callout">
-      <div className="donation-icon">❤️</div>
-      <div className="donation-text">
-        <h4>Our first ₹15,000 is already making a difference</h4>
-        <p>Helping people with disabilities learn, grow, and earn with dignity — and this is just the beginning.</p>
+  {/* Right line with smooth fade on both ends */}
+  <div className="relative w-18 h-[1px] overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C8A45D] to-transparent" />
+  </div>
+</div>
+
+        {/* Metric Cards */}
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          
+          {/* Card 1 */}
+          <div className="rounded-xl border border-white/10 bg-white/5 p-8 flex items-center justify-between text-left backdrop-blur-md h-[200px] bg-[#02362c7a] shadow-[0_10px_40px_rgba(0,0,0,0.25)]">
+            <div className="flex items-center gap-5 justify-center">
+              <div className="w-20 h-20 flex items-center justify-center rounded-full bg-[#C8A45D]/20 text-[#C8A45D] text-xl">
+                <LiaHandHoldingHeartSolid className="inline-block w-10 h-10" />
+              </div>
+              <div>
+                <h3 className="text-5xl font-semibold mt-1 mb-2 font-serif">₹15,000</h3>
+                <p className="text-sm text-gray-300">contributed so far</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2 */}
+          <div className="rounded-xl border border-white/10 bg-white/5 p-8 flex items-center justify-between text-left backdrop-blur-md h-[200px] bg-[#02362c7a] shadow-[0_10px_40px_rgba(0,0,0,0.25)]">
+            <div className="flex items-center gap-5 justify-center">
+              <div className="w-20 h-20 flex items-center justify-center rounded-full bg-[#C8A45D]/20 text-[#C8A45D] text-xl">
+                <MdPeopleOutline className="inline-block w-10 h-10" />
+              </div>
+              <div>
+                <h3 className="text-5xl font-semibold mt-1 mb-2 font-serif">30%</h3>
+                <p className="text-sm text-gray-300">
+                  profits committed to community development
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* transparency note */}
+        <div className="flex items-center justify-center gap-2 text-gray-300 text-sm mb-10">
+          <span className="text-[#C8A45D]">
+            <GoShieldCheck className="inline-block w-5 h-5" />
+          </span>
+          Every contribution will be transparently documented.
+        </div>
+
+        {/* Button */}
+        <button className="bg-[#C8A45D] hover:bg-[#b8934f] text-black font-medium px-6 py-3 rounded-full transition flex items-center gap-2 mx-auto">
+          View Impact
+        </button>
+
+        {/* Footer line */}
+<p className="mt-6 flex items-center justify-center gap-3 text-sm text-gray-400">
+  {/* Left line with smooth fade */}
+  <span className="relative h-[1px] w-12 overflow-hidden">
+    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C8A45D] to-transparent" />
+  </span>
+
+  {/* Text */}
+  <span>Real impact. Real transparency.</span>
+
+  {/* Right line with smooth fade */}
+  <span className="relative h-[1px] w-12 overflow-hidden">
+    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C8A45D] to-transparent" />
+  </span>
+</p>
+
+        {/* Bottom Feature Bar */}
+<div className="mt-14 rounded-2xl border border-white/10 bg-[#02362c7a] px-8 py-6 shadow-[0_10px_40px_rgba(0,0,0,0.25)]">
+  <div className="grid grid-cols-1 md:grid-cols-4">
+    {[
+      {
+        icon: <HiOutlineDocumentCheck className="w-7 h-7 text-white/90" />,
+        title: "Verified Receipts",
+        description: "All contributions backed by real receipts.",
+      },
+      {
+        icon: <HiOutlineBuildingLibrary className="w-7 h-7 text-white/90" />,
+        title: "Trusted Partners",
+        description: "We work with verified, impact-driven NGOs.",
+      },
+      {
+        icon: <BiLandscape className="w-7 h-7 text-white/90" />,
+        title: "On-Ground Impact",
+        description: "Real stories and photos from the communities.",
+      },
+      {
+        icon: <SlCalender className="w-7 h-7 text-white/90" />,
+        title: "Regular Updates",
+        description: "We share updates as impact happens.",
+      },
+    ].map((item, index) => (
+      <div
+        key={index}
+        className={`flex items-start gap-4 px-6 py-2 ${
+          index !== 3 ? "md:border-r md:border-white/10" : ""
+        }`}
+      >
+        {/* Icon */}
+        <div className="flex-shrink-0 mt-1">{item.icon}</div>
+
+        {/* Content */}
+        <div>
+          <h4 className="text-white font-semibold text-[15px] leading-tight">
+            {item.title}
+          </h4>
+          <p className="mt-1 text-[13px] leading-5 text-white/70 max-w-[180px]">
+            {item.description}
+          </p>
+        </div>
       </div>
-      <div className="donation-badge">30% back</div>
-    </div>
+    ))}
   </div>
-</section>
-  )
-}
+</div>
+      </div>
+    </section>
+  );
+};
 
-export default Impact
+export default Impact;

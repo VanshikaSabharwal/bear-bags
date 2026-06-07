@@ -1,62 +1,123 @@
-import React from 'react'
-import { GiWaterDrop } from "react-icons/gi";
-import { PiPlantBold } from "react-icons/pi";
-import { GiStrong } from "react-icons/gi";
-import { FaRecycle } from "react-icons/fa";
+'use client'
+import React, { useRef, useState } from 'react'
 import Image from 'next/image';
 
-
 const WhyBearBags = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+const togglePlay = () => {
+  if (!videoRef.current) return;
+  if (videoRef.current.paused) {
+    videoRef.current.play();
+    setIsPlaying(true);
+  } else {
+    videoRef.current.pause();
+    setIsPlaying(false);
+  }
+};
+
   return (
-    <section id="why">
-  <div className="section-label">Product Philosophy</div>
-  <h2 className="section-title">Strong. <br />Compostable. </h2>
-  {/* <p className="section-sub">We are the strongest compostable garbage bag. Period.</p> */}
+    <section id="why" className="bg-[#fff9f3]">
 
-  <div className="why-grid">
-    {/* <div className="why-cards">
-      <div className="why-card">
-        <div className="why-card-icon">
-            <FaRecycle size={24} /> 
-        </div>
-        <div>
-          <h4>Built for real use.</h4>
-          <p>Thicker walls and tested durability mean fewer breaks, fewer messes, fewer regrets.</p>
-        </div>
-      </div>
-      <div className="why-card">
-        <div className="why-card-icon">
-            <PiPlantBold size={24} />
-        </div>
-        <div>
-          <h4>Compostable. Not Compromised.</h4>
-          <p>100% compostable materials — no microplastic residue, no greenwashing, just clean decomposition.</p>
-        </div>
-      </div>
-      <div className="why-card">
-        <div className="why-card-icon">
-            <GiWaterDrop size={24} />
-        </div>
-        <div>
-          <h4>No Leak. No Tear..</h4>
-          <p>Packed in 100% plastic-free packaging.</p>
-        </div>
-      </div>
-    </div> */}
 
-<div className="why-aside">
-  <div className="image-wrapper">
-    <Image
-      src="/images/Bag Stretch Image without backgorund 2.png"
-      alt="No Leak. No Tear."
-      fill
-      className="image"
-    />
+
+      {/* Image Block */}
+      <div className="image-wrapper">
+        <h2 className="section-title">Built for real use.</h2>
+        <Image
+          src="/images/Bag Stretch Image without backgorund 2.png"
+          alt="No Leak. No Tear."
+          fill
+          className="image"
+        />
+          {/* Bottom Wave */}
+  <div className="absolute bottom-0 left-0 w-full leading-none">
+    <svg
+      viewBox="0 0 1440 120"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-auto block"
+      preserveAspectRatio="none"
+    >
+      <path
+        fill="#173d36"
+        d="M0,64L80,58.7C160,53,320,43,480,48C640,53,800,75,960,80C1120,85,1280,75,1360,69.3L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"
+      />
+    </svg>
   </div>
-</div>
-  </div>
-</section>
+      </div>
 
+      
+
+      {/* Video Block */}
+      <div className="px-4 md:px-10 py-16 md:py-20 max-w-7xl mx-auto text-center">
+
+        {/* Pill label */}
+        <span className="inline-block text-[11px] font-bold tracking-[0.18em] uppercase text-[#173d36] bg-[#fde8d0] px-4 py-1.5 rounded-full mb-5">
+          See It In Action
+        </span>
+
+        {/* Title */}
+        <h2 className="text-4xl md:text-5xl font-extrabold text-[#2c1a0e] leading-tight tracking-tight mb-4">
+          Tougher than{' '}
+          <span className="text-[#173d36]">you think.</span>
+        </h2>
+
+        {/* Subtitle */}
+        <p className="text-base text-[#7a5c44] max-w-lg mx-auto leading-relaxed mb-12">
+          Watch how Bear Bags handle real-world stress — stretching, soaking, and everything in between.
+        </p>
+
+        {/* Video container */}
+        <div className="group relative rounded-2xl overflow-hidden border-2 border-[#f2d9c0] shadow-[0_20px_60px_rgba(181,101,29,0.15)] w-full aspect-[16/9] bg-[#173d36]">
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-full w-auto mx-auto rotate-270 scale-[1.8] object-cover"
+          >
+            <source src="/videos/Bear Bags_Unboxing.mp4" type="video/mp4" />
+          </video>
+
+          {/* Overlay on pause */}
+          {!isPlaying && (
+            <div className="absolute inset-0 bg-black/30 transition-opacity duration-300" />
+          )}
+
+          {/* Play/Pause button — visible on hover or when paused */}
+          <button
+            onClick={togglePlay}
+            className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300
+              ${isPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}
+            aria-label={isPlaying ? 'Pause video' : 'Play video'}
+          >
+            <div className="w-16 h-16 rounded-full bg-[#fff9f3]/90 backdrop-blur-sm flex items-center justify-center shadow-lg hover:scale-110 hover:bg-white transition-all duration-200">
+              {isPlaying ? (
+                // Pause icon
+                <svg className="w-6 h-6 text-[#173d36]" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                </svg>
+              ) : (
+                // Play icon (offset slightly for optical centering)
+                <svg className="w-6 h-6 text-[#173d36] translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              )}
+            </div>
+          </button>
+
+          {/* Top-left corner accent */}
+          <div className="absolute top-3 left-3 w-9 h-9 border-t-2 border-l-2 border-[#173d36] rounded-tl opacity-50 pointer-events-none" />
+
+          {/* Bottom-right corner accent */}
+          <div className="absolute bottom-3 right-3 w-9 h-9 border-b-2 border-r-2 border-[#173d36] rounded-br opacity-50 pointer-events-none" />
+        </div>
+
+      </div>
+
+    </section>
   )
 }
 

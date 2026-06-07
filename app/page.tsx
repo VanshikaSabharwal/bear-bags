@@ -23,7 +23,7 @@ export default function Home() {
       <Impact />
 
       {/* 5. Our Story  */}
-      <OurStory />
+      {/* <OurStory /> */}
 
       {/* 6. Testimonials */}
       <Testimonials />

@@ -33,7 +33,7 @@ const footer = () => {
     <div className="footer-link-group">
       <h5>Quick links</h5>
       <ul>
-        <li><Link href="/shop">Shop Now</Link></li>
+        <li><Link href="/medium-size-bag">Shop Now</Link></li>
         <li><Link href="mailto:hello@bearbags.in">Contact Us</Link></li>
         <li><Link href="https://wa.me/919131783440">WhatsApp</Link></li>
       </ul>

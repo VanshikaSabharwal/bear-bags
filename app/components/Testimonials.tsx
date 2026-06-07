@@ -1,104 +1,207 @@
-import React from 'react'
+'use client';
+import React, { useEffect, useRef } from "react";
 
-const Testimonials = () => {
-  return (
-    <section className="testimonials-section" id="testimonials">
-  <div className="section-label">Customer reviews</div>
-  <h2 className="section-title">What people are saying</h2>
+const testimonials = [
+  {
+    type: "image",
+    name: "Avisha",
+    image: "/images/review/avisha_review.jpeg",
+    quote:
+      "I've tried at least four eco-friendly garbage bags before.",
+    avatar: "A",
+  },
 
-  <div className="testimonials-grid">
-    <div className="testimonial-card featured">
-      <div className="quote-mark">&quot;</div>
-      <div className="stars">
-        <span className="star">★</span><span className="star">★</span><span className="star">★</span><span className="star">★</span><span className="star">★</span>
-      </div>
-      <p className="testimonial-quote">I&apos;ve tried at least four &quot;eco-friendly&quot; garbage bags before. They all tore at the worst possible times. Bear Bags is the first one that actually holds up &mdash; I was genuinely surprised.</p>
-      <div className="testimonial-author">
-        <div className="author-avatar">PR</div>
-        <div>
-          <div className="author-name">Priya Rajendran</div>
-          <div className="author-role">Verified Buyer · Bangalore</div>
-        </div>
-      </div>
-    </div>
-
-    <div className="testimonial-card">
-      <div className="quote-mark">&quot;</div>
-      <div className="stars">
-        <span className="star">★</span><span className="star">★</span><span className="star">★</span><span className="star">★</span><span className="star">★</span>
-      </div>
-      <p className="testimonial-quote">Love that 30&percnt; of profits go to a good cause. I feel like my purchase actually means something. And the bags are solid &mdash; no leaks, no drama.</p>
-      <div className="testimonial-author">
-        <div className="author-avatar">AS</div>
-        <div>
-          <div className="author-name">Arjun Sharma</div>
-          <div className="author-role">Verified Buyer · Mumbai</div>
-        </div>
-      </div>
-    </div>
-
-    <div className="testimonial-card">
-      <div className="quote-mark">&quot;</div>
-      <div className="stars">
-        <span className="star">★</span><span className="star">★</span><span className="star">★</span><span className="star">★</span><span className="star">★</span>
-      </div>
-      <p className="testimonial-quote">Finally switched my entire home to compostable bags. Was nervous about the quality but Bear Bags exceeded expectations. Won&apos;t be going back.</p>
-      <div className="testimonial-author">
-        <div className="author-avatar">MN</div>
-        <div>
-          <div className="author-name">Meera Nair</div>
-          <div className="author-role">Verified Buyer · Chennai</div>
-        </div>
-      </div>
-    </div>
-
-    <div className="testimonial-card">
-      <div className="quote-mark">&quot;</div>
-      <div className="stars">
-        <span className="star">★</span><span className="star">★</span><span className="star">★</span><span className="star">★</span><span className="star">★</span>
-      </div>
-      <p className="testimonial-quote">The transparency about where the profits go is really refreshing. Most brands say they care &mdash; Bear Bags actually shows it.</p>
-      <div className="testimonial-author">
-        <div className="author-avatar">VK</div>
-        <div>
-          <div className="author-name">Vikram Kapoor</div>
-          <div className="author-role">Verified Buyer · Delhi</div>
-        </div>
-      </div>
-    </div>
-
-    <div className="testimonial-card">
-      <div className="quote-mark">&quot;</div>
-      <div className="stars">
-        <span className="star">★</span><span className="star">★</span><span className="star">★</span><span className="star">★</span><span className="star">★</span>
-      </div>
-      <p className="testimonial-quote">Ordered these for my restaurant kitchen. Tough conditions, greasy waste &mdash; and these bags handled everything without a single tear. Impressive.</p>
-      <div className="testimonial-author">
-        <div className="author-avatar">SR</div>
-        <div>
-          <div className="author-name">Sunita Rao</div>
-          <div className="author-role">Business Buyer · Hyderabad</div>
-        </div>
-      </div>
-    </div>
-
-    <div className="testimonial-card">
-      <div className="quote-mark">&quot;</div>
-      <div className="stars">
-        <span className="star">★</span><span className="star">★</span><span className="star">★</span><span className="star">★</span><span className="star">★</span>
-      </div>
-      <p className="testimonial-quote">Good price point for what you get. I&apos;ve recommended Bear Bags to my entire apartment building. A few have already switched. It just makes sense.</p>
-      <div className="testimonial-author">
-        <div className="author-avatar">AK</div>
-        <div>
-          <div className="author-name">Ankit Kumar</div>
-          <div className="author-role">Verified Buyer · Pune</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-  )
+  {
+    type: "video",
+    name: "Anoop",
+    video: "/videos/anoop_review.MP4",
+    quote:
+      "Love that 30% of profits go to a good cause.",
+    avatar: "A",
+  },
+   {
+    type: "image",
+    name: "Mekhala",
+    image: "/images/review/mekhala_review.jpeg",
+    quote:
+      "Finally found a compostable bag that actually works.",
+    avatar: "M",
+  },
+  {
+    type: "image",
+    name: "Sachin",
+    image: "/images/review/sachin_review.jpeg",
+    quote:
+      "Finally switched my entire home to compostable bags.",
+      avatar: "S",
+  },
+    {
+    type: "video",
+    name: "Ayushi",
+    video: "/videos/ayushi_review.mp4",
+    quote:
+      "Love that 30% of profits go to a good cause.",
+    avatar: "A",
+  },
+   {
+    type: "image",
+    name: "Anish",
+    image: "/images/review/anish_review.jpeg",
+    quote:
+      "Finally found a compostable bag that actually works.",
+    avatar: "M",
+  },
+  {
+    type: "image",
+    name: "Lavanya",
+    image: "/images/review/lavanya_review.jpg",
+    quote:
+      "Finally switched my entire home to compostable bags.",
+      avatar: "L",
+  },
+];
+interface TrackType {
+  scrollWidth: number;
+  style: {
+    transform: string;
+  }
 }
 
-export default Testimonials
+const Testimonials = () => {
+const trackRef = useRef<HTMLDivElement | null>(null);
+const isPaused = useRef(false);
+
+  useEffect(() => {
+    let animationFrame: number;
+    let position = 0;
+    const speed = 0.5;
+
+    const animate = () => {
+      position -= speed;
+
+      const track: TrackType | null = trackRef.current;
+
+      if (track) {
+        if(!isPaused.current) {
+          position -= speed;
+        
+        const firstSetWidth = track.scrollWidth / 2;
+
+        if (Math.abs(position) >= firstSetWidth) {
+          position = 0;
+        }
+
+        track.style.transform = `translateX(${position}px)`;
+      }
+    }
+
+      animationFrame = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, []);
+
+  return (
+    <section
+      id="testimonials"
+      className="py-24 bg-[#f8f8f6] overflow-hidden"
+    >
+      <div className="text-center mb-14 px-4">
+        <p className="uppercase tracking-[0.2em] text-sm text-neutral-500 mb-3">
+          Customer Reviews
+        </p>
+
+        <h2 className="text-4xl md:text-5xl font-semibold text-neutral-900">
+          What people are saying
+        </h2>
+      </div>
+
+      <div className="relative overflow-hidden">
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 z-10 h-full w-32 bg-gradient-to-r from-[#f8f8f6] to-transparent" />
+        <div className="absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-[#f8f8f6] to-transparent" />
+
+        <div
+          ref={trackRef}
+          className="flex w-max will-change-transform"
+        >
+          {[...testimonials, ...testimonials].map((item, index) => (
+<div
+  key={index}
+  className="w-[350px] shrink-0 rounded-3xl border border-neutral-200 bg-white p-7 shadow-sm mx-3"
+    onMouseEnter={() => {
+    isPaused.current = true;
+  }}
+  onMouseLeave={() => {
+    isPaused.current = false;
+  }}
+>
+
+  {/* IMAGE */}
+  {item.type === "image" && item.image && (
+    <div className="mb-5 overflow-hidden rounded-2xl">
+      <img
+        src={item.image}
+        alt={item.name}
+        className="h-[240px] w-full object-cover"
+      />
+    </div>
+  )}
+
+  {/* VIDEO */}
+  {item.type === "video" && item.video && (
+    <div className="mb-5 overflow-hidden rounded-2xl">
+      <video
+        src={item.video}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="h-[240px] w-full object-cover"
+      />
+    </div>
+  )}
+
+  <div className="mb-4 flex text-[#ffb400] text-lg">
+    ★★★★★
+  </div>
+
+  <p className="text-neutral-700 leading-7 mb-6">
+    “{item.quote}”
+  </p>
+
+  <div className="flex items-center gap-4">
+
+    {item.avatar ? (
+      <div className="h-12 w-12 rounded-full bg-black text-white flex items-center justify-center font-semibold">
+        {item.avatar}
+      </div>
+    ) : (
+      <img
+        src={item.image}
+        alt={item.name}
+        className="h-12 w-12 rounded-full object-cover"
+      />
+    )}
+
+    <div>
+      <h4 className="font-semibold text-neutral-900">
+        {item.name}
+      </h4>
+
+      {/* <p className="text-sm text-neutral-500">
+        {item.role}
+      </p> */}
+    </div>
+  </div>
+</div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Testimonials;

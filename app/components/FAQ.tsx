@@ -1,12 +1,64 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 
 const FAQ = () => {
+  const [showAll, setShowAll] = useState(false);
 
   const toggleFaq = (e: React.MouseEvent<HTMLDivElement>) => {
     const item = e.currentTarget.parentElement;
     item?.classList.toggle("open");
   };
+
+  const faqs = [
+    {
+      question: "Are Bear Bags approved by the government?",
+      answer: "Yes.Bear Bags are CPCB certified compostable bags and comply with applicable compostability requirements in India. Bear Bags are also TÜV Austria certified for industrial compostability, meeting internationally recognized compostability standards."
+    },
+    {
+      question: "How long does Bear Bags take to decompose?",
+      answer: "Bear Bags break down under composting conditions. The exact decomposition time depends on temperature,  moisture, and composting environment, but they are designed to decompose naturally without leaving microplastics behind."
+    },
+    {
+      question: "What material are Bear Bags made from?",
+      answer: "Bear Bags are made from compostable materials including corn starch–based components and certified compostable polymers designed for compostability and strength."
+    },
+    {
+      question: "What is the strength of Bear Bags?",
+      answer: "Bear Bags are made using compostable film with a thickness of around 25 microns and engineered for real household use. Our focus is simple — strong enough for everyday garbage handling without compromising compostability."
+    },
+    {
+      question: "Why should I buy this when plastic bags are cheaper? It’s garbage anyway.",
+      answer: "Regular plastic garbage bags stay in the environment for years and can leave microplastics behind. Bear Bags are designed for people who want a stronger alternative without adding more plastic waste. "
+    },
+    {
+      question: "Why the name “Bear Bags”?",
+      answer: "The bear represents strength — our core belief from day one. We wanted to build compostable bags that people choose because they are fit for real use, not just because they are sustainable."
+    },
+    {
+      question: "What does the “30% profits pledged” commitment mean?",
+      answer: "Bear Bags has pledged 30% of profits toward community development initiatives. Every contribution and impact update will be transparently documented on our Impact page as the brand grows."
+    },
+    {
+      question: "What sizes are currently available?",
+      answer: "Current offering: Medium (19 × 21 inches) — suitable for everyday household use."
+    },
+    {
+      question: "Where can I buy Bear Bags?",
+      answer: "Bear Bags are available online on Amazon and through selected retail partners."
+    },
+    {
+      question: " Do Bear Bags contain plastic?",
+      answer: "No conventional plastic. Bear Bags are designed as certified compostable garbage bags."
+    },
+    {
+      question: "Can Bear Bags be used for wet kitchen waste?",
+      answer: "Yes. Bear Bags are designed for everyday household use and are suitable for wet and dry household waste handling."
+    },
+    {
+      question: "Do Bear Bags leave microplastics behind?",
+      answer: "No. Bear Bags are designed to decompose without leaving conventional plastic residue or microplastics behind."
+    }
+  ];
 
   return (
 <section id="faq">
@@ -22,91 +74,41 @@ const FAQ = () => {
       </div>
     </div>
 
-    <div className="faq-list">
-      <div className="faq-item open">
-        <div className="faq-question" onClick={toggleFaq}>
-          Are Bear Bags actually compostable, or is that just marketing&quest;
-          <div className="faq-toggle">+</div>
-        </div>
-        <div className="faq-answer">
-          <div className="faq-answer-inner">
-            Bear Bags are made from 100&percnt; compostable materials &mdash; no plastic content, no partial blends. They break down naturally in composting conditions without leaving microplastics behind. We don&apos;t use the word &quot;compostable&quot; loosely.
-          </div>
-        </div>
-      </div>
+<div className="faq-list">
+  {faqs
+    .slice(0, showAll ? faqs.length : 6)
+    .map((faq, index) => (
+      <div
+        key={index}
+        className={`faq-item ${index === 0 ? "open" : ""}`}
+      >
+        <div
+          className="faq-question"
+          onClick={toggleFaq}
+        >
+          {faq.question}
 
-      <div className="faq-item">
-        <div className="faq-question" onClick={toggleFaq}>
-          How strong are these compared to regular plastic bags?
           <div className="faq-toggle">+</div>
         </div>
-        <div className="faq-answer">
-          <div className="faq-answer-inner">
-            We reinforced Bear Bags specifically because most compostable bags feel flimsy. We tested for tear resistance, leak-proofing, and load bearing before finalizing the product. They hold up in everyday household use &mdash; including wet, heavy waste.
-          </div>
-        </div>
-      </div>
 
-      <div className="faq-item">
-        <div className="faq-question" onClick={toggleFaq}>
-          Where does the 30% profit donation actually go?
-          <div className="faq-toggle">+</div>
-        </div>
         <div className="faq-answer">
           <div className="faq-answer-inner">
-            Our first ₹15,000 donation has already gone toward programs helping people with disabilities learn, grow, and earn with dignity. As we grow, we&apos;ll publish updates on every contribution. Transparency is core to how we operate.
+            {faq.answer}
           </div>
         </div>
       </div>
+    ))}
 
-      <div className="faq-item">
-        <div className="faq-question" onClick={toggleFaq}>
-          Where can I buy Bear Bags?
-          <div className="faq-toggle">+</div>
-        </div>
-        <div className="faq-answer">
-          <div className="faq-answer-inner">
-            You can order directly from our website at bearbags.in. We also list on Amazon India. If you&apos;re looking for bulk orders for your business or organization, reach out to us via WhatsApp or email and we&apos;ll sort you out.
-          </div>
-        </div>
-      </div>
-
-      <div className="faq-item">
-        <div className="faq-question" onClick={toggleFaq}>
-          Do you offer bulk orders for businesses?
-          <div className="faq-toggle">+</div>
-        </div>
-        <div className="faq-answer">
-          <div className="faq-answer-inner">
-            Yes. We work with restaurants, offices, housing societies, and other organizations. Contact us on WhatsApp (+91 91317 83440) or email to discuss quantities and pricing.
-          </div>
-        </div>
-      </div>
-
-      <div className="faq-item">
-        <div className="faq-question" onClick={toggleFaq}>
-          What sizes are available?
-          <div className="faq-toggle">+</div>
-        </div>
-        <div className="faq-answer">
-          <div className="faq-answer-inner">
-            We offer multiple sizes suitable for kitchen bins, larger waste bins, and outdoor use. Visit our product page on bearbags.in for the current size lineup and specifications.
-          </div>
-        </div>
-      </div>
-
-      <div className="faq-item">
-        <div className="faq-question" onClick={toggleFaq}>
-          Is the price competitive with regular garbage bags?
-          <div className="faq-toggle">+</div>
-        </div>
-        <div className="faq-answer">
-          <div className="faq-answer-inner">
-            Yes. We priced Bear Bags to be accessible &mdash; because we believe sustainability shouldn&apos;t be a premium feature. You pay slightly more than the cheapest plastic alternatives, but you get a product that performs better and does far less harm.
-          </div>
-        </div>
-      </div>
-    </div>
+  {/* READ MORE BUTTON */}
+  {faqs.length > 6 && (
+    <button
+      onClick={() => setShowAll(!showAll)}
+      className="mt-6 text-sm font-medium text-black hover:opacity-70 transition"
+    >
+      {showAll ? "Read Less ↑" : "Read More ↓"}
+    </button>
+  )}
+</div>
   </div>
 </section>
 

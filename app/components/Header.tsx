@@ -32,10 +32,10 @@ const Header = () => {
         <ul className="hidden md:flex items-center gap-6">
           <li><Link href="/#home">Home</Link></li>
           <li><Link href="/#why">Why</Link></li>
-          <li><Link href="/#impact">Impact</Link></li>
+          <li><Link href="/impact">Impact</Link></li>
           <li><Link href="/#testimonials">Reviews</Link></li>
           <li><Link href="/#faq">FAQ</Link></li>
-          <li><Link href="/shop">Shop</Link></li>
+          <li><Link href="/medium-size-bag">Shop</Link></li>
 
           {/* CART */}
           <li>
@@ -73,7 +73,7 @@ const Header = () => {
           <li><Link href="/#impact" onClick={() => setOpen(false)}>Impact</Link></li>
           <li><Link href="/#testimonials" onClick={() => setOpen(false)}>Reviews</Link></li>
           <li><Link href="/#faq" onClick={() => setOpen(false)}>FAQ</Link></li>
-          <li><Link href="/shop" onClick={() => setOpen(false)}>Shop</Link></li>
+          <li><Link href="/medium-size-bag" onClick={() => setOpen(false)}>Shop</Link></li>
 
           {/* CART */}
           <li>

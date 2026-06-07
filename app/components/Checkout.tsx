@@ -9,13 +9,14 @@ interface Product {
   icon: string;
   size?: string;
   count?: number;
+  option?: string;
   features?: string[];
 }
 
 interface CheckoutProps {
   cartItems: { product: Product; quantity: number }[];
-  onUpdateQuantity: (productId: number, quantity: number) => void;
-  onRemoveItem: (productId: number) => void;
+  onUpdateQuantity: (productId: number, quantity: number, option?: string) => void;
+  onRemoveItem: (productId: number, option?: string) => void;
   onClearCart: () => void;
 }
 
@@ -116,7 +117,7 @@ export default function Checkout({ cartItems, onUpdateQuantity, onRemoveItem, on
 
               <div className="space-y-3 md:space-y-4">
                 {cartItems.map((item) => (
-                  <div key={item.product.id}
+                  <div key={`${item.product.id}-${item.product.option ?? 'default'}`}
                        className="flex gap-3 md:gap-4 p-3 md:p-4 rounded-xl border"
                        style={{ borderColor: 'rgba(26,58,42,0.08)' }}>
                     <div className="w-16 h-16 md:w-20 md:h-20 rounded-lg flex items-center justify-center text-2xl md:text-3xl flex-shrink-0"
@@ -128,13 +129,14 @@ export default function Checkout({ cartItems, onUpdateQuantity, onRemoveItem, on
                         {item.product.name}
                       </h3>
                       <p className="text-xs md:text-sm mb-2" style={{ color: 'var(--text-muted)' }}>
-                        {item.product.size} • {item.product.count} bags
+                        {(item.product.size ?? item.product.option ?? 'Bag')} • {item.product.count ?? item.quantity} bags
                       </p>
                       <div className="flex flex-wrap items-center gap-2 md:gap-3">
                         <div className="flex items-center gap-2 rounded-lg overflow-hidden border"
                              style={{ borderColor: 'rgba(26,58,42,0.15)' }}>
                           <button
-                            onClick={() => onUpdateQuantity(item.product.id, Math.max(1, item.quantity - 1))}
+                            type="button"
+                            onClick={() => onUpdateQuantity(item.product.id, Math.max(1, item.quantity - 1), item.product.option)}
                             className="px-2 md:px-3 py-1 hover:bg-black/5 transition-colors text-sm md:text-base"
                             style={{ color: 'var(--forest)' }}>
                             −
@@ -144,14 +146,16 @@ export default function Checkout({ cartItems, onUpdateQuantity, onRemoveItem, on
                             {item.quantity}
                           </span>
                           <button
-                            onClick={() => onUpdateQuantity(item.product.id, item.quantity + 1)}
+                            type="button"
+                            onClick={() => onUpdateQuantity(item.product.id, item.quantity + 1, item.product.option)}
                             className="px-2 md:px-3 py-1 hover:bg-black/5 transition-colors text-sm md:text-base"
                             style={{ color: 'var(--forest)' }}>
                             +
                           </button>
                         </div>
                         <button
-                          onClick={() => onRemoveItem(item.product.id)}
+                          type="button"
+                          onClick={() => onRemoveItem(item.product.id, item.product.option)}
                           className="text-xs md:text-sm opacity-60 hover:opacity-100 transition-opacity"
                           style={{ color: 'var(--destructive)' }}>
                           Remove
