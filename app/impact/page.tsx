@@ -2,17 +2,38 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const letters = [
   {
     name: 'Gnana Jyothi Trust',
     image: '/images/acknowledgment/Gnana Jyothi Trust_Acknowledgement Letter.jpeg',
     pdf: '/images/acknowledgment/Gnana Jyothi Trust_Acknowledgement Letter.jpeg',
+    website: 'https://gnanajyothi.org/',
+    description: 'Gnana Jyothi Trust was established in 2005 by two visually impaired individuals, Eshwar and Issac, this trust is deeply committed to empowering blind individuals through education and independence',
+    images: [
+      '/images/gnanaJyothiNGO/gnana_jyothi_1.jpg',
+      '/images/gnanaJyothiNGO/gnana_jyothi_2.jpg',
+      '/images/gnanaJyothiNGO/gnana_jyothi_3.jpg',
+      '/images/gnanaJyothiNGO/gnana_jyothi_4.jpg'
+    ]
   },
   {
     name: 'Samarthanam Trust',
     image: '/images/acknowledgment/Samarthanam Acknowledgment Letter Screenshot.png',
     pdf: '/images/acknowledgment/Samarthanam Acknowledgment Letter Screenshot.png',
+    website: 'https://samarthanam.org/',
+    description: 'Samarthanam Trust for the Disabled and Gnana Jyothi Trust are prominent non-governmental organizations in India dedicated to empowering individuals with visual impairments and other disabilities',
+    images: [
+      '/images/gnanaJyothiNGO/gnana_jyothi_1.jpg',
+      '/images/gnanaJyothiNGO/gnana_jyothi_2.jpg',
+      '/images/gnanaJyothiNGO/gnana_jyothi_3.jpg',
+      '/images/gnanaJyothiNGO/gnana_jyothi_4.jpg'
+    ]
   },
 ];
 
@@ -39,53 +60,71 @@ export default function ImpactPage() {
     <main className="bg-[#f5f2eb] text-[#1a3d2b]">
 
       {/* ── Hero ── */}
-      <section className="bg-[#1a3d2b] pt-40 pb-28 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-10 items-center">
-          <div className="md:col-span-7">
-            <p className="uppercase tracking-[0.14em] text-[#c8dbbf] text-xs font-sans mb-4 opacity-80">
-              Our Impact
-            </p>
-            <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight mb-6">
-              Our Impact.
-              <br />
-              <span className="text-[#c8dbbf]">Their Future.</span>
-            </h1>
-            <p className="font-sans text-[#c8dbbf]/70 text-lg max-w-lg mb-12 leading-relaxed">
-              We are on a mission to eliminate plastic waste and create a
-              cleaner future through sustainable alternatives.
-            </p>
-            {/* Stats row */}
-            <div className="flex gap-4 flex-wrap">
-              {[
-                { num: '2.4M', label: 'Lbs Plastic Removed' },
-                { num: '12K+', label: 'Families Served' },
-                { num: '4', label: 'NGO Partners' },
-              ].map((s) => (
-                <div
-                  key={s.label}
-                  className="bg-white/5 border border-[#c8dbbf]/20 rounded-2xl px-6 py-4 min-w-[120px]"
-                >
-                  <div className="text-3xl font-bold text-white">{s.num}</div>
-                  <div className="uppercase tracking-wider text-[10px] font-sans text-[#c8dbbf] mt-1 opacity-75">
-                    {s.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+{/* ── Hero ── */}
+<section className="relative overflow-hidden pt-40 pb-28 px-6 md:px-16">
+  {/* Background Video */}
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="absolute inset-0 w-full h-full object-cover"
+  >
+    <source src="/videos/impact_page_unboxing_video.mp4" type="video/mp4" />
+  </video>
 
-          <div className="hidden md:block md:col-span-5">
-            <div className="relative h-[520px] rounded-3xl overflow-hidden">
-              <Image
-                src="/images/impact-hero.jpg"
-                alt="Forest"
-                fill
-                className="object-cover"
-              />
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-[#1a3d2b]/70" />
+
+  {/* Content */}
+  <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-12 gap-10 items-center">
+    <div className="md:col-span-7">
+      <p className="uppercase tracking-[0.14em] text-[#c8dbbf] text-xs font-sans mb-4 opacity-80">
+        Our Impact
+      </p>
+
+      <h1 className="text-6xl md:text-7xl font-bold text-white leading-tight mb-6">
+        Our Impact.
+        <br />
+        <span className="text-[#c8dbbf]">Their Future.</span>
+      </h1>
+
+      <p className="font-sans text-[#c8dbbf]/70 text-lg max-w-lg mb-12 leading-relaxed">
+        We are on a mission to eliminate plastic waste and create a cleaner
+        future through sustainable alternatives.
+      </p>
+
+      <div className="flex gap-4 flex-wrap">
+        {[
+          { num: '2.4M', label: 'Lbs Plastic Removed' },
+          { num: '12K+', label: 'Families Served' },
+          { num: '4', label: 'NGO Partners' },
+        ].map((s) => (
+          <div
+            key={s.label}
+            className="bg-white/5 backdrop-blur-sm border border-[#c8dbbf]/20 rounded-2xl px-6 py-4 min-w-[120px]"
+          >
+            <div className="text-3xl font-bold text-white">{s.num}</div>
+            <div className="uppercase tracking-wider text-[10px] font-sans text-[#c8dbbf] mt-1 opacity-75">
+              {s.label}
             </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+
+    <div className="hidden md:block md:col-span-5">
+      <div className="relative h-[520px] rounded-3xl overflow-hidden">
+        <Image
+          src="/images/impact-hero.jpg"
+          alt="Forest"
+          fill
+          className="object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* ── About ── */}
       <section className="bg-[#e8f0e3] py-28 px-6 md:px-16">
@@ -142,12 +181,27 @@ export default function ImpactPage() {
                   className="relative w-full h-[400px] group block"
                   aria-label={`View ${letter.name} acknowledgement letter`}
                 >
-                  <Image
-                    src={letter.image}
-                    alt={`${letter.name} acknowledgement letter`}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+<Swiper
+  modules={[Navigation, Pagination, Autoplay]}
+  navigation
+  pagination={{ clickable: true }}
+  autoplay={{ delay: 4000 }}
+  loop
+  className="h-[400px]"
+>
+  {letter.images.map((img, index) => (
+    <SwiperSlide key={index}>
+      <div className="relative h-[400px]">
+        <Image
+          src={img}
+          alt={letter.name}
+          fill
+          className="object-cover"
+        />
+      </div>
+    </SwiperSlide>
+  ))}
+</Swiper>
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-[#1a3d2b]/0 group-hover:bg-[#1a3d2b]/30 transition-all duration-300 flex items-center justify-center">
                     <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-2 group-hover:translate-y-0 bg-white text-[#1a3d2b] text-sm font-semibold font-sans px-6 py-2.5 rounded-full flex items-center gap-2">
@@ -158,9 +212,34 @@ export default function ImpactPage() {
                 </button>
 
                 <div className="p-7">
-                  <h3 className="font-sans text-lg font-semibold text-[#1a3d2b] mb-5">
-                    {letter.name}
-                  </h3>
+<div className="flex items-center justify-between gap-4 mb-5">
+  <h3 className="font-sans text-lg font-semibold text-[#1a3d2b]">
+    {letter.name}
+  </h3>
+
+  <a
+    href={letter.website}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-1 text-sm font-medium text-[#2d6347] hover:text-[#1a3d2b] transition-colors whitespace-nowrap"
+  >
+    Website
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <path d="M7 17L17 7" />
+      <path d="M7 7h10v10" />
+    </svg>
+  </a>
+</div>
+  <p className="font-sans text-sm leading-relaxed text-[#1a3d2b]/65 mb-6">
+    {letter.description}
+  </p>
                   <div className="flex gap-3">
                     <button
                       onClick={() => setSelected(letter)}
@@ -184,6 +263,17 @@ export default function ImpactPage() {
           </div>
         </div>
       </section>
+
+
+
+
+
+
+
+
+
+
+
 
       {/* ── NGO Partners ── */}
       <section className="bg-[#e8f0e3] py-28 px-6 md:px-16">
@@ -216,15 +306,21 @@ export default function ImpactPage() {
           onClick={() => setSelected(null)}
           className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-6 backdrop-blur-sm"
         >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="relative max-w-4xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl"
-          >
+<div
+  onClick={(e) => e.stopPropagation()}
+  className="relative max-w-6xl w-full bg-white rounded-[32px] overflow-hidden shadow-2xl"
+>
             {/* Header */}
             <div className="flex items-center justify-between px-7 py-5 border-b border-[#1a3d2b]/10">
-              <h3 className="font-sans font-semibold text-[#1a3d2b]">
-                {selected.name} — Acknowledgement Letter
-              </h3>
+<div className="px-8 py-6 border-b border-[#1a3d2b]/10">
+  <p className="text-xs uppercase tracking-wider text-[#2d6347] mb-1">
+    NGO Gallery
+  </p>
+
+  <h3 className="text-2xl font-bold text-[#1a3d2b]">
+    {selected.name}
+  </h3>
+</div>
               <button
                 onClick={() => setSelected(null)}
                 aria-label="Close"
@@ -235,16 +331,34 @@ export default function ImpactPage() {
             </div>
 
             {/* Image */}
-            <div className="relative w-full h-[70vh]">
-              <Image
-                src={selected.image}
-                alt={`${selected.name} acknowledgement letter`}
-                fill
-                className="object-contain"
-              />
-            </div>
+<div className="w-full h-[70vh]">
+  <Swiper
+    modules={[Navigation, Pagination]}
+    navigation
+    pagination={{ clickable: true }}
+    loop
+    className="h-full"
+  >
+    {selected.images.map((img, index) => (
+      <SwiperSlide key={index}>
+        <div className="relative w-full h-[80vh] bg-[#f8f8f8]">
+          <Image
+            src={img}
+            alt={`${selected.name} image ${index + 1}`}
+            fill
+            className="object-cover"
+          />
+          
+        </div>
+        <div className="absolute top-5 right-5 z-20 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
+  {index + 1} / {selected.images.length}
+</div>
+      </SwiperSlide>
+    ))}
+  </Swiper>
+</div>
 
-            {/* Footer */}
+            {/* Footer
             <div className="flex justify-end px-7 py-5 border-t border-[#1a3d2b]/10 bg-[#f5f2eb]">
               <a
                 href={selected.pdf}
@@ -254,7 +368,7 @@ export default function ImpactPage() {
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Download PDF
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       )}
