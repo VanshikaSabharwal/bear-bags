@@ -40,7 +40,7 @@ const letters = [
 const ngoPartners = ['Ocean Cleanup', 'Green Earth Alliance', 'Global Reach', 'Eco Lab'];
 
 export default function ImpactPage() {
-  const [selected, setSelected] = useState<(typeof letters)[0] | null>(null);
+  const [selected, setSelected] = useState<{letter: (typeof letters)[0]; mode: 'letter' | 'gallery'} | null>(null);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -177,7 +177,7 @@ export default function ImpactPage() {
               >
                 {/* Image / clickable area */}
                 <button
-                  onClick={() => setSelected(letter)}
+                  onClick={() => setSelected({letter, mode: 'gallery'})}
                   className="relative w-full h-[400px] group block"
                   aria-label={`View ${letter.name} acknowledgement letter`}
                 >
@@ -242,7 +242,7 @@ export default function ImpactPage() {
   </p>
                   <div className="flex gap-3">
                     <button
-                      onClick={() => setSelected(letter)}
+                      onClick={() => setSelected({letter, mode: 'letter'})}
                       className="px-5 py-2.5 rounded-full border-2 border-[#1a3d2b] font-sans text-sm font-semibold text-[#1a3d2b] hover:bg-[#1a3d2b] hover:text-white transition-all duration-200"
                     >
                       View Letter
@@ -314,11 +314,11 @@ export default function ImpactPage() {
             <div className="flex items-center justify-between px-7 py-5 border-b border-[#1a3d2b]/10">
 <div className="px-8 py-6 border-b border-[#1a3d2b]/10">
   <p className="text-xs uppercase tracking-wider text-[#2d6347] mb-1">
-    NGO Gallery
+    {selected.mode === 'letter' ? 'Acknowledgement Letter' : 'NGO Gallery'}
   </p>
 
   <h3 className="text-2xl font-bold text-[#1a3d2b]">
-    {selected.name}
+    {selected.letter.name}
   </h3>
 </div>
               <button
@@ -331,44 +331,58 @@ export default function ImpactPage() {
             </div>
 
             {/* Image */}
-<div className="w-full h-[70vh]">
-  <Swiper
-    modules={[Navigation, Pagination]}
-    navigation
-    pagination={{ clickable: true }}
-    loop
-    className="h-full"
-  >
-    {selected.images.map((img, index) => (
-      <SwiperSlide key={index}>
-        <div className="relative w-full h-[80vh] bg-[#f8f8f8]">
-          <Image
-            src={img}
-            alt={`${selected.name} image ${index + 1}`}
-            fill
-            className="object-cover"
-          />
-          
-        </div>
-        <div className="absolute top-5 right-5 z-20 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
-  {index + 1} / {selected.images.length}
-</div>
-      </SwiperSlide>
-    ))}
-  </Swiper>
-</div>
-
-            {/* Footer
-            <div className="flex justify-end px-7 py-5 border-t border-[#1a3d2b]/10 bg-[#f5f2eb]">
-              <a
-                href={selected.pdf}
-                download
-                className="px-6 py-2.5 rounded-full bg-[#1a3d2b] text-white font-sans text-sm font-semibold hover:bg-[#245038] transition flex items-center gap-2"
-              >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Download PDF
-              </a>
-            </div> */}
+{selected.mode === 'letter' ? (
+  <div className="w-full h-[70vh] relative bg-[#f8f8f8]">
+    <Image
+      src={selected.letter.image}
+      alt={`${selected.letter.name} acknowledgement letter`}
+      fill
+      className="object-contain"
+    />
+    <div className="absolute bottom-5 right-5 flex gap-3">
+      <a
+        href={selected.letter.pdf}
+        download
+        className="px-5 py-2.5 rounded-full bg-[#1a3d2b] text-white font-sans text-sm font-semibold hover:bg-[#245038] transition flex items-center gap-2 shadow-lg"
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download PDF
+      </a>
+      <button
+        onClick={() => setSelected({letter: selected.letter, mode: 'gallery'})}
+        className="px-5 py-2.5 rounded-full bg-white/90 text-[#1a3d2b] font-sans text-sm font-semibold hover:bg-white transition flex items-center gap-2 shadow-lg"
+      >
+        View Gallery
+      </button>
+    </div>
+  </div>
+) : (
+  <div className="w-full h-[70vh]">
+    <Swiper
+      modules={[Navigation, Pagination]}
+      navigation
+      pagination={{ clickable: true }}
+      loop
+      className="h-full"
+    >
+      {selected.letter.images.map((img, index) => (
+        <SwiperSlide key={index}>
+          <div className="relative w-full h-[80vh] bg-[#f8f8f8]">
+            <Image
+              src={img}
+              alt={`${selected.letter.name} image ${index + 1}`}
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="absolute top-5 right-5 z-20 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
+            {index + 1} / {selected.letter.images.length}
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  </div>
+)}
           </div>
         </div>
       )}

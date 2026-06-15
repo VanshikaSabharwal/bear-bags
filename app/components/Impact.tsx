@@ -103,22 +103,22 @@ const Impact = () => {
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-0">
     {[
       {
-        icon: <HiOutlineDocumentCheck className="w-6 h-6 sm:w-7 sm:h-7 text-white/90" />,
+        icon: <HiOutlineDocumentCheck className="w-6 h-6 sm:w-7 sm:h-7  text-[#C8A45D]" />,
         title: "Verified Receipts",
         description: "All contributions backed by real receipts.",
       },
       {
-        icon: <HiOutlineBuildingLibrary className="w-6 h-6 sm:w-7 sm:h-7 text-white/90" />,
+        icon: <HiOutlineBuildingLibrary className="w-6 h-6 sm:w-7 sm:h-7  text-[#C8A45D]" />,
         title: "Trusted Partners",
         description: "We work with verified, impact-driven NGOs.",
       },
       {
-        icon: <BiLandscape className="w-6 h-6 sm:w-7 sm:h-7 text-white/90" />,
+        icon: <BiLandscape className="w-6 h-6 sm:w-7 sm:h-7 text-[#C8A45D]" />,
         title: "On-Ground Impact",
         description: "Real stories and photos from the communities.",
       },
       {
-        icon: <SlCalender className="w-6 h-6 sm:w-7 sm:h-7 text-white/90" />,
+        icon: <SlCalender className="w-6 h-6 sm:w-7 sm:h-7 text-[#C8A45D]" />,
         title: "Regular Updates",
         description: "We share updates as impact happens.",
       },

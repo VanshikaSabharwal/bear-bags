@@ -140,14 +140,14 @@ const page = () => {
                 <button
                   type="button"
                   onClick={handleDecrease}
-                  className="h-10 w-10 rounded-2xl border border-[#c7d7c7] bg-[#f8fcf6] text-xl font-semibold text-[#23473f]">
+                  className="h-10 w-10 rounded-2xl border border-[#c7d7c7] bg-[#f8fcf6] text-xl font-semibold text-[#23473f] cursor-pointer">
                   −
                 </button>
                 <span className="min-w-[48px] text-center text-lg font-semibold text-[#23473f]">{quantity}</span>
                 <button
                   type="button"
                   onClick={handleIncrease}
-                  className="h-10 w-10 rounded-2xl border border-[#c7d7c7] bg-[#f8fcf6] text-xl font-semibold text-[#23473f]">
+                  className="h-10 w-10 rounded-2xl border border-[#c7d7c7] bg-[#f8fcf6] text-xl font-semibold text-[#23473f] cursor-pointer">
                   +
                 </button>
               </div>

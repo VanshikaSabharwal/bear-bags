@@ -37,8 +37,17 @@ export default function Checkout({ cartItems, onUpdateQuantity, onRemoveItem, on
   const total = subtotal + shipping;
   const impact = Math.round(total * 0.3);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      await fetch('/api/order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ formData, cartItems, subtotal, shipping, total }),
+      });
+    } catch {
+      // Non-blocking: proceed with order confirmation even if CRM save fails
+    }
     setOrderPlaced(true);
     setTimeout(() => {
       onClearCart();

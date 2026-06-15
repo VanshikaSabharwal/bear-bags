@@ -17,11 +17,9 @@ import { LuShield } from "react-icons/lu";
 
 function WaterShieldIcon() {
   return (
-    <div style={{ position: 'relative', display: 'inline-block', width: '50px', height: '50px' }}>
-      {/* Outer Shield */}
-      <LuShield size={50} color="#333" style={{ position: 'absolute', top: 0, left: 0 }} />
-      {/* Inner Water Drop */}
-      <LuDroplet size={22} color="#333" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -45%)' }} />
+    <div style={{ position: 'relative', display: 'inline-block', width: '64px', height: '64px', flexShrink: 0 }}>
+      <LuShield size={64} color="#23473f" style={{ position: 'absolute', top: 0, left: 0 }} />
+      <LuDroplet size={28} color="#23473f" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -45%)' }} />
     </div>
   );
 }
@@ -39,12 +37,13 @@ const ProductIntroduction = () => {
 
           {/* LEFT IMAGE */}
           <div className="flex justify-center">
-            <div className="relative w-full max-w-[750px] h-[320px] sm:h-[400px] md:h-[520px]">
+            <div className="relative w-full max-w-[340px] sm:max-w-[520px] md:max-w-[640px] lg:max-w-[750px] h-[300px] sm:h-[420px] md:h-[520px]">
               <Image
                 src={product.imageSrc}
                 alt={product.imageAlt}
                 fill
                 priority
+                className="object-contain"
               />
             </div>
           </div>
@@ -119,58 +118,42 @@ const ProductIntroduction = () => {
         </div>
 
         {/* BOTTOM FEATURES */}
-        <div className=" mt-12 pt-8 grid grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="mt-12 rounded-2xl border border-[#e8ddd0] bg-[#faf5ef] grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#e8ddd0]">
 
           {/* FEATURE 1 */}
-          <div className="flex items-start gap-3 product-introduction-card">
-            {/* <PiPlantBold className="text-[#23473f] text-2xl mt-1" /> */}
-              <BiLeaf className="text-[#23473f] text-2xl mt-1 w-[50px] h-[50px]" />
+          <div className="flex items-center gap-5 sm:gap-6 px-6 sm:px-10 lg:px-14 py-6 sm:py-10">
+            <BiLeaf className="text-[#23473f] shrink-0 w-[52px] h-[52px] sm:w-[64px] sm:h-[64px]" />
             <div>
-              <h5 className="text-sm font-semibold text-[#23473f] text-[1.3rem]">
+              <h5 className="font-semibold text-[#23473f] text-[1.1rem] sm:text-[1.3rem] lg:text-[1.4rem] leading-tight">
                 100% Compostable
               </h5>
-              <p className="text-xs text-[#666] mt-1 text-[1.1rem]">
-                No plastic, No microplastics.
+              <p className="text-[#666] mt-1 text-[0.9rem] sm:text-[1rem] lg:text-[1.1rem]">
+                No plastic. No microplastics.
               </p>
             </div>
           </div>
 
           {/* FEATURE 2 */}
-          <div className="flex items-start gap-3 product-introduction-card">
-            {/* <GiWaterDrop className="text-[#23473f] text-2xl mt-1" /> */}
+          <div className="flex items-center gap-5 sm:gap-6 px-6 sm:px-10 lg:px-14 py-6 sm:py-10">
             {WaterShieldIcon()}
             <div>
-              <h5 className="text-sm font-semibold text-[#23473f] text-[1.3rem]">
+              <h5 className="font-semibold text-[#23473f] text-[1.1rem] sm:text-[1.3rem] lg:text-[1.4rem] leading-tight">
                 No Leak. No Tear.
               </h5>
-              <p className="text-xs text-[#666] mt-1 text-[1.1rem]">
+              <p className="text-[#666] mt-1 text-[0.9rem] sm:text-[1rem] lg:text-[1.1rem]">
                 Built for real use.
               </p>
             </div>
           </div>
 
           {/* FEATURE 3 */}
-          {/* <div className="flex items-start gap-3 product-introduction-card">
-            <FaRecycle className="text-[#23473f] text-2xl mt-1" />
+          <div className="flex items-center gap-5 sm:gap-6 px-6 sm:px-10 lg:px-14 py-6 sm:py-10">
+            <LiaHandHoldingHeartSolid className="text-[#23473f] shrink-0 w-[52px] h-[52px] sm:w-[64px] sm:h-[64px]" />
             <div>
-              <h5 className="text-sm font-semibold text-[#23473f] text-[1.3rem]">
-                Made from Corn Starch
-              </h5>
-              <p className="text-xs text-[#666] mt-1 text-[1.1rem]">
-                Better for you, better for Earth
-              </p>
-            </div>
-          </div> */}
-
-          {/* FEATURE 4 */}
-          <div className="flex items-start gap-3 product-introduction-card">
-            {/* <GiStrong className="text-[#23473f] text-2xl mt-1" /> */}
-            <LiaHandHoldingHeartSolid className="text-[#23473f] text-2xl mt-1 w-[50px] h-[50px]" />
-            <div>
-              <h5 className="text-sm font-semibold text-[#23473f] text-[1.3rem]">
+              <h5 className="font-semibold text-[#23473f] text-[1.1rem] sm:text-[1.3rem] lg:text-[1.4rem] leading-tight">
                 30% Giveback
               </h5>
-              <p className="text-xs text-[#666] mt-1 font-medium text-[1.1rem]">
+              <p className="text-[#666] mt-1 text-[0.9rem] sm:text-[1rem] lg:text-[1.1rem]">
                 Supporting community development.
               </p>
             </div>
