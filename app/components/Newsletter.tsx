@@ -26,55 +26,59 @@ export default function Newsletter() {
   };
 
   return (
-    <section id="newsletter" className="py-24 px-[5%]" style={{ background: 'var(--sage)' }}>
-      <div className="max-w-[800px] mx-auto text-center">
-        <div className="text-[11px] font-semibold tracking-[2.5px] uppercase mb-4"
-             style={{ color: '#1c594e' }}>
+    <section id="newsletter" className="bg-[#0f3f30]">
+      <div className="max-w-2xl mx-auto text-center px-4">
+
+        {/* Label */}
+        <p className="uppercase tracking-[2.5px] text-[11px] sm:text-[12px] font-semibold mb-4 text-[#8ab89a]">
           Stay Connected
-        </div>
-        <h2 className="font-['Playfair_Display'] font-bold tracking-tight mb-5"
-            style={{ fontSize: 'clamp(32px, 4vw, 52px)', color: '#1c594e' }}>
+        </p>
+
+        {/* Heading */}
+        <h2
+          className="font-['Playfair_Display'] font-bold tracking-tight mb-4 text-[#f4eee5]"
+          style={{ fontSize: 'clamp(28px, 5vw, 52px)' }}
+        >
           Join the movement
         </h2>
-        <p className="text-[17px] leading-relaxed max-w-[560px] mx-auto font-light mb-10"
-           style={{ color: 'var(--forest-mid)' }}>
+
+        {/* Subtext */}
+        <p className="text-[15px] sm:text-[17px] leading-relaxed max-w-[520px] mx-auto font-light mb-8 sm:mb-10 text-[#b8d0c4]">
           Get updates on our impact, exclusive offers, and tips for living more sustainably. No spam, just good stuff.
         </p>
 
+        {/* Form / success */}
         {submitted ? (
-          <div className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-medium"
-               style={{ background: '#1c594e', color: 'white' }}>
+          <div className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base font-medium bg-[#d4a96a] text-[#0f3f30]">
             ✓ Thank you for subscribing!
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex gap-3 max-w-[500px] mx-auto newsletter-form">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col sm:flex-row gap-3 max-w-[500px] mx-auto"
+          >
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
-              className="flex-1 rounded-full border-2 outline-none transition-all p-[.8rem] mt-4"
-              style={{
-                background: 'white',
-                borderColor: 'rgba(26, 58, 42, 0.2)',
-                color: 'var(--charcoal)'
-              }}
-              onFocus={(e) => e.currentTarget.style.borderColor = '#1c594e'}
-              onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(26, 58, 42, 0.2)'}
+              className="flex-1 rounded-full border-2 outline-none transition-all px-5 py-3 sm:py-3.5 text-sm sm:text-base bg-white text-[#1c1c1a] placeholder:text-[#999] border-transparent focus:border-[#8ab89a]"
             />
             <button
               type="submit"
-              className="px-8 py-4 rounded-full font-medium text-[15px] transition-all hover:-translate-y-0.5 hover:shadow-lg whitespace-nowrap w-[6rem] h-[2rem] flex items-center justify-center"
-              style={{ background: '#1c594e', color: 'white' }}>
+              className="rounded-full font-semibold text-[14px] sm:text-[15px] transition-all hover:-translate-y-0.5 hover:shadow-lg whitespace-nowrap px-7 py-3 sm:py-3.5 bg-[#d4a96a] text-[#0f3f30] hover:bg-[#e0ba84]"
+            >
               Subscribe
             </button>
           </form>
         )}
 
-        <p className="text-sm mt-6 opacity-70" style={{ color: 'var(--forest-mid)' }}>
+        {/* Privacy note */}
+        <p className="text-xs sm:text-sm mt-5 text-[#7aaa90]">
           We respect your privacy. Unsubscribe anytime.
         </p>
+
       </div>
     </section>
   );

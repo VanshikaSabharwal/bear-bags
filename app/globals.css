@@ -330,9 +330,9 @@ width: 513px;
     #home { padding: clamp(48px, 8vw, 100px) 5%; }
     #product { padding: 100px 5%; }
     #impact { padding: 100px 5%; }
-    #testimonials { padding: 100px 5%; }
-    #faq { padding: 100px 5%; }
-    #newsletter { padding: 100px 5%; }
+    #testimonials { padding: clamp(40px, 7vw, 100px) 5%; }
+    #faq { padding: clamp(40px, 7vw, 100px) 5%; }
+    #newsletter { padding: clamp(48px, 8vw, 100px) 5%; }
 
   .section-label {
     font-size: 11px;
@@ -750,6 +750,15 @@ width: 513px;
     align-items: flex-start;
   }
 
+  @media (max-width: 767px) {
+    .faq-layout {
+      display: none;
+      /* grid-template-columns: 1fr; */
+      gap: 36px;
+      margin-top: 36px;
+    }
+  }
+
   .faq-sidebar h3 {
     font-family: 'Playfair Display', serif;
     font-size: 26px;
@@ -757,6 +766,12 @@ width: 513px;
     color: var(--forest);
     line-height: 1.3;
     margin-bottom: 20px;
+  }
+
+  @media (max-width: 767px) {
+    .faq-sidebar h3 { font-size: 20px; }
+    .faq-question { padding: 18px 20px; font-size: 14px; }
+    .faq-answer-inner { padding: 0 20px 20px; padding-top: 14px; }
   }
 
   .faq-sidebar p {
@@ -918,6 +933,10 @@ width: 513px;
   }
 
   .footer-tagline { font-family: 'Playfair Display', serif; font-style: italic; color: rgba(255,255,255,0.3); }
+
+  /* ─── SCROLLBAR HIDE ─── */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
   /* ─── UTILITY ─── */
   .text-center { text-align: center; }

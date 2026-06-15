@@ -54,9 +54,9 @@ const togglePlay = () => {
   </div>
 
   {/* Full Width Image */}
-  <div className="relative mt-[-5rem] w-full">
+  <div className="relative mt-[-1.5rem] sm:mt-[-3rem] md:mt-[-5rem] w-full">
 
-<div className="relative w-full h-[700px] overflow-hidden">
+<div className="relative w-full h-[260px] sm:h-[440px] md:h-[700px] overflow-hidden mt-[30px]">
   <div className="stretch-inner">
     <Image
       src="/images/Bag Stretch Image without backgorund 2.png"
