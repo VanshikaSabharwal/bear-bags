@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 interface Testimonial {
@@ -46,6 +46,14 @@ const testimonials: Testimonial[] = [
     rating: 5,
   },
   {
+    type: "image",
+    name: "Amazon Vine Review",
+    image: "/images/review/amazon_vine_review.png",
+    quote: "These compostable garbage bags exceeded my expectations. Unlike many eco-friendly bags that can feel thin or rough, these have a much more premium feel, they're soft to the touch, flexible, and well-made. Despite being soft, they're also quite sturdy and handle both dry and wet waste without tearing easily during regular use. The size is perfect for everyday household bins, and the perforations between bags are clean, making them easy to separate from the roll. It's nice to see that they're CPCB and TÜV certified, which gives confidence that they're genuinely compostable and not just marketed as eco-friendly. One thing I would have liked is a built-in drawstring or tie closure to make sealing and disposing of the waste more convenient, but that's a minor gripe given the overall quality. Overall, these bags strike a great balance between sustainability, durability, and premium feel. A solid choice for anyone looking to switch to eco-friendly garbage bags without compromising on quality.",
+    avatar: "A",
+    rating: 4,
+  },
+  {
     type: "video",
     name: "Ayushi",
     video: "/videos/ayushi_review.mp4",
@@ -81,6 +89,8 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 function TestimonialCard({ item }: { item: Testimonial }) {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <div className="w-[300px] sm:w-[340px] shrink-0 rounded-3xl border border-neutral-200 bg-white p-6 sm:p-7 shadow-sm">
       {item.type === "image" && item.image && (
@@ -94,10 +104,18 @@ function TestimonialCard({ item }: { item: Testimonial }) {
         </div>
       )}
       <StarRating rating={item.rating} />
-      <p className="text-neutral-700 leading-7 mb-6 text-sm sm:text-base">
+      <p className={`text-neutral-700 leading-7 text-sm sm:text-base ${expanded ? '' : 'line-clamp-5'}`}>
         "{item.quote}"
       </p>
-      <div className="flex items-center gap-4">
+      {item.quote.length > 180 && (
+        <button
+          onClick={() => setExpanded((v) => !v)}
+          className="mt-2 mb-4 text-sm font-semibold text-[#1f3a2f] hover:underline"
+        >
+          {expanded ? 'Read less' : 'Read more'}
+        </button>
+      )}
+      <div className={`flex items-center gap-4 ${item.quote.length > 180 ? '' : 'mt-6'}`}>
         <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-black text-white flex items-center justify-center font-semibold text-sm sm:text-base shrink-0">
           {item.avatar}
         </div>
