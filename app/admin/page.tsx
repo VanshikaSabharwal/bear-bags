@@ -2,6 +2,8 @@ import { prisma } from '@/lib/prisma';
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
 
+export const dynamic = 'force-dynamic';
+
 async function logout() {
   'use server';
   (await cookies()).delete('bear_admin_session');
